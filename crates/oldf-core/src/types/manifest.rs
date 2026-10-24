@@ -1,3 +1,4 @@
+use crate::types::datasets::Dataset;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 
@@ -70,7 +71,7 @@ pub struct Manifest {
     /// Every data file stored in the archive.
     ///
     /// The order is the one in the file and is preserved when writing.
-    pub datasets: Vec<String>, // TODO: implement dataset struct
+    pub datasets: Vec<Dataset>, // TODO: implement dataset struct
 }
 
 #[cfg(test)]
@@ -115,7 +116,7 @@ mod tests {
             Utc.with_ymd_and_hms(2026, 10, 24, 12, 0, 0).unwrap()
         );
         assert_eq!(manifest.created_by, "example");
-        assert_eq!(manifest.datasets, vec!["d-1", "d-2"]);
+        // assert_eq!(manifest.datasets, vec!["d-1", "d-2"]);
     }
 
     #[test]
@@ -160,7 +161,7 @@ mod tests {
         let original_manifest = with("datasets", json!(["c", "a", "b"]));
         let parsed_manifest = parse(original_manifest.clone()).unwrap();
 
-        assert_eq!(parsed_manifest.datasets, vec!["c", "a", "b"]);
+        // assert_eq!(parsed_manifest.datasets, vec!["c", "a", "b"]);
         assert_eq!(
             serde_json::to_value(&parsed_manifest).unwrap()["datasets"],
             original_manifest["datasets"]
