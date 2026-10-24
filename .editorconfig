@@ -1,0 +1,79 @@
+# EditorConfig: https://editorconfig.org
+#
+# Rule of thumb for this repository:
+#   - programming languages  -> 4 spaces
+#   - data, markup and config -> 2 spaces
+#   - formatters (rustfmt, ruff, JuliaFormatter...) have the last word;
+#     this file only makes sure every editor agrees with them.
+
+root = true
+
+# Defaults for every text file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Programming languages (4 spaces)
+[*.rs]
+max_line_length = 100
+
+[*.py]
+max_line_length = 88
+
+[*.jl]
+max_line_length = 92
+
+[*.{c,h,sh,wgsl,glsl,vert,frag}]
+indent_size = 4
+
+# Data, markup and config (2 spaces)
+[*.{toml,json,jsonc,yml,yaml,nix,js,mjs,ts,jsx,tsx,html,css}]
+indent_size = 2
+
+[*.md]
+indent_size = 2
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Build and task runners
+[{Makefile,makefile,*.mk}]
+indent_style = tab
+tab_width = 4
+
+[{justfile,Justfile,*.just}]
+indent_size = 4
+
+# Windows-only scripts
+[*.{bat,cmd}]
+end_of_line = crlf
+
+# Scientific data and test fixtures: never touch them.
+# Fixed-width formats (PDB) and byte-exact files must stay as they are.
+[*.{pdb,ent,cif,mmcif,bcif,fasta,fa,fastq,csv,tsv}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
+
+[**/fixtures/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
+
+# Binary files
+[*.{oldf,zip,png,jpg,jpeg,gif,tif,tiff,parquet,h5,hdf5,glb}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
