@@ -10,3 +10,7 @@ uuid = { version = "1.29.0", features = ["v4", "serde"] }
 semver = { version = "1.0.28", features = ["serde"] }
 serde_json = "1.0.154"
 camino = { version = "1.2.6", features = ["serde1"]}
+
+[[test]]
+path = "tests/it/main.rs"
+name = "integration-tests"
