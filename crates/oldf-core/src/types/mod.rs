@@ -1,2 +1,5 @@
-pub mod dataset;
-pub mod manifest;
+mod dataset;
+mod manifest;
+
+pub use dataset::*;
+pub use manifest::*;
