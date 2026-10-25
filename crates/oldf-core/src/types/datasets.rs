@@ -19,6 +19,13 @@ pub struct GenerationMethod {
     pub parameters: BTreeMap<String, serde_json::Value>,
 }
 
+#[derive(Default, Clone, Deserialize, Serialize, Debug)]
+pub struct Column {
+    pub name: String,
+    pub data_type: String,
+    pub unit: String,
+}
+
 #[derive(Default, Serialize, Deserialize, Debug, Clone)]
 pub struct Dataset {
     pub id: String,
@@ -35,5 +42,5 @@ pub struct Dataset {
     pub instrument: Option<String>,
     pub sample: Option<String>,
     pub acquired: Option<chrono::DateTime<Utc>>,
-    pub columns: Option<Vec<String>>, // Only if tabular data and columns can be provided
+    pub columns: Option<Vec<Column>>, // Only if tabular data and columns can be provided
 }
