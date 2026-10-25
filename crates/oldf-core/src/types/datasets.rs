@@ -21,13 +21,13 @@ pub struct GenerationMethod {
 
 #[derive(Default, Serialize, Deserialize, Debug, Clone)]
 pub struct Dataset {
-    pub id: uuid::Uuid,
+    pub id: String,
     pub path: camino::Utf8PathBuf,
     pub profile: String,
     pub media_type: String,
     pub role: Role,
     pub sha256: String,
-    pub size: usize,
+    pub size: u64,
 
     pub derived_from: Option<Vec<String>>, // Only if derived
     pub method: Option<GenerationMethod>,  // Only if derived or simulated
