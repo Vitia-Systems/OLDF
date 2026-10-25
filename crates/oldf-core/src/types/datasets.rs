@@ -16,6 +16,7 @@ pub struct GenerationMethod {
     pub tool: String,
     pub version: String, // Not required to follow semver rules
     pub algorithm: String,
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
     pub parameters: BTreeMap<String, serde_json::Value>,
 }
 
@@ -24,7 +25,8 @@ pub struct Column {
     pub name: String,
     #[serde(rename = "type")]
     pub data_type: String,
-    pub unit: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unit: Option<String>,
 }
 
 #[derive(Default, Serialize, Deserialize, Debug, Clone)]
@@ -37,11 +39,21 @@ pub struct Dataset {
     pub sha256: String,
     pub size: u64,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub derived_from: Option<Vec<String>>, // Only if derived
-    pub method: Option<GenerationMethod>,  // Only if derived or simulated
 
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub method: Option<GenerationMethod>, // Only if derived or simulated
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub instrument: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub sample: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub acquired: Option<chrono::DateTime<Utc>>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub columns: Option<Vec<Column>>, // Only if tabular data and columns can be provided
 }
