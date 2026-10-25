@@ -16,7 +16,7 @@ pub struct GenerationMethod {
     pub tool: String,
     pub version: String, // Not required to follow semver rules
     pub algorithm: String,
-    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub parameters: BTreeMap<String, serde_json::Value>,
 }
 
