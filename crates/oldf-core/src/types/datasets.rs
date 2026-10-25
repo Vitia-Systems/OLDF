@@ -22,6 +22,7 @@ pub struct GenerationMethod {
 #[derive(Default, Clone, Deserialize, Serialize, Debug)]
 pub struct Column {
     pub name: String,
+    #[serde(rename = "type")]
     pub data_type: String,
     pub unit: String,
 }
