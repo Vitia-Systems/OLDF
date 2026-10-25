@@ -23,7 +23,7 @@ use std::collections::BTreeMap;
 /// # Examples
 ///
 /// ```
-/// use oldf_core::Role;
+/// use oldf_core::types::Role;
 ///
 /// assert_eq!(serde_json::to_string(&Role::Derived).unwrap(), r#""derived""#);
 ///
@@ -67,7 +67,7 @@ pub enum Role {
 /// # Examples
 ///
 /// ```
-/// use oldf_core::GenerationMethod;
+/// use oldf_core::types::GenerationMethod;
 ///
 /// let json = r#"{
 ///     "tool": "example-tool",
@@ -118,7 +118,7 @@ pub struct GenerationMethod {
 /// # Examples
 ///
 /// ```
-/// use oldf_core::Column;
+/// use oldf_core::types::Column;
 ///
 /// let with_unit: Column =
 ///     serde_json::from_str(r#"{ "name": "size_bp", "type": "int32", "unit": "bp" }"#).unwrap();
@@ -188,7 +188,7 @@ pub struct Column {
 /// A raw dataset, with only the required fields:
 ///
 /// ```
-/// use oldf_core::{Dataset, Role};
+/// use oldf_core::types::{Dataset, Role};
 ///
 /// let json = r#"{
 ///     "id": "d-1",
@@ -209,7 +209,7 @@ pub struct Column {
 /// A derived table, which says where it comes from and how it was computed:
 ///
 /// ```
-/// use oldf_core::{Dataset, Role};
+/// use oldf_core::types::{Dataset, Role};
 ///
 /// let json = r#"{
 ///     "id": "d-2",
