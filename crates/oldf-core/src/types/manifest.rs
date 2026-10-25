@@ -1,4 +1,4 @@
-use crate::types::datasets::Dataset;
+use crate::types::dataset::Dataset;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 
