@@ -24,7 +24,7 @@ fn reads_a_valid_manifest() {
         Utc.with_ymd_and_hms(2026, 10, 24, 12, 0, 0).unwrap()
     );
 
-    assert_eq!(manifest.created_by, "example");
+    assert_eq!(manifest.created_by.software, "example");
     for (got, expected) in manifest.datasets.iter().zip(vec!["d-1", "d-2"]) {
         assert_eq!(got.id, expected);
     }
@@ -37,7 +37,7 @@ fn reads_a_manifest_from_text() {
             "format_version": "0.1.0",
             "id": "968f89fd-aa83-52d0-8eb1-8b1727e3b0cf",
             "created": "2026-10-24T12:00:00Z",
-            "created_by": "example",
+            "created_by": { "software": "example", "version": "0.1.0" },
             "datasets": []
         }"#;
 

@@ -1,4 +1,5 @@
 use crate::types::Dataset;
+use crate::types::generator_data::GeneratorData;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 
@@ -26,7 +27,7 @@ use serde::{Deserialize, Serialize};
 ///     "format_version": "0.1.0",
 ///     "id": "968f89fd-aa83-52d0-8eb1-8b1727e3b0cf",
 ///     "created": "2026-10-24T12:00:00Z",
-///     "created_by": "example",
+///     "created_by": { "software": "example", "version": "0.1.0" },
 ///     "datasets": []
 /// }"#;
 ///
@@ -66,10 +67,10 @@ pub struct Manifest {
     pub created: chrono::DateTime<Utc>,
 
     /// The software that wrote the file.
-    pub created_by: String, // TODO: implement createdBy struct
+    pub created_by: GeneratorData,
 
     /// Every data file stored in the archive.
     ///
     /// The order is the one in the file and is preserved when writing.
-    pub datasets: Vec<Dataset>, // TODO: implement dataset struct
+    pub datasets: Vec<Dataset>,
 }

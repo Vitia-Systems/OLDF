@@ -13,7 +13,7 @@ pub fn manifest_json() -> Value {
         "format_version": "0.1.0",
         "id": "968f89fd-aa83-52d0-8eb1-8b1727e3b0cf",
         "created": "2026-10-24T12:00:00Z",
-        "created_by": "example",
+        "created_by": { "software": "example", "version": "0.1.0" },
         "datasets": [raw_json(), derived_json()]
     })
 }

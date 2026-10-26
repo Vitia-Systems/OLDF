@@ -1,4 +1,3 @@
-use crate::types::Dataset;
 use serde::{Deserialize, Serialize};
 
 /// How a dataset came to exist: measured, computed or simulated.
