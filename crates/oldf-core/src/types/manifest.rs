@@ -60,10 +60,12 @@ pub struct Manifest {
     /// Unique identifier of this file, as a UUID.
     ///
     /// It identifies the archive as a whole. Datasets have their own local
-    /// ids, which are only unique inside this manifest.
+    /// ids, which are only unique inside this manifest. Defaults to a random UUID v4
+    #[serde(default = "uuid::Uuid::new_v4")]
     pub id: uuid::Uuid,
 
-    /// When the file was created, in UTC.
+    /// When the file was created, in UTC. Defaults to now.
+    #[serde(default = "Utc::now")]
     pub created: chrono::DateTime<Utc>,
 
     /// The software that wrote the file.
