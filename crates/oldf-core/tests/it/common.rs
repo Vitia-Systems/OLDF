@@ -31,6 +31,14 @@ pub fn raw_json() -> Value {
     })
 }
 
+/// A valid generator data value.
+pub fn generator_json() -> Value {
+    json!({
+        "software": "example-tool",
+        "version": "0.0.1"
+    })
+}
+
 /// A derived dataset with every optional field present.
 pub fn derived_json() -> Value {
     json!({
