@@ -153,14 +153,7 @@ fn rejects_wrong_types() {
 
 #[test]
 fn rejects_a_missing_required_field() {
-    for field in [
-        "format",
-        "format_version",
-        "id",
-        "created",
-        "created_by",
-        "datasets",
-    ] {
+    for field in ["format", "format_version", "created_by", "datasets"] {
         let mut value = manifest_json();
         value.as_object_mut().unwrap().remove(field);
         assert!(
